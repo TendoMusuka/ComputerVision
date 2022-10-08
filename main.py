@@ -34,7 +34,7 @@ def read_webcam():
 
 
 def image_processing():
-    kernel = np.ones((5, 5), np.unit8)  # thickness
+    kernel = np.ones((5, 5), np.uint8)  # thickness
     img = cv2.imread("Resources/Landscape.jpg")  # reads image
     # changes your image to different color spaces
 
