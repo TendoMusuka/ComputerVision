@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 print("Package Imported")
 
@@ -33,12 +34,18 @@ def read_webcam():
 
 
 def image_processing():
+    kernel = np.ones((5, 5), np.unit8)  # thickness
     img = cv2.imread("Resources/Landscape.jpg")  # reads image
     # changes your image to different color spaces
+
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # Edge Detector
+    imgCanny = cv2.Canny(img, 100, 100)  # determine the parameters and what they define
+    imgDilation = cv2.dilate(imgCanny, kernel, iterations=1)
+
     cv2.imshow("Gray Image", imgGray)
-    imgCanny = cv2.Canny(img, 100, 100) #determine the parameters and what they define
     cv2.imshow("Canny Image", imgCanny)  # detects the edges
+    cv2.imshow("Dilation Image", imgDilation)
     cv2.waitKey(0)
 
 
