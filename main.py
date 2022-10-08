@@ -42,10 +42,12 @@ def image_processing():
     # Edge Detector
     imgCanny = cv2.Canny(img, 100, 100)  # determine the parameters and what they define
     imgDilation = cv2.dilate(imgCanny, kernel, iterations=1)
+    imgEroded = cv2.erode(imgDilation, kernel, iterations=1)
 
     cv2.imshow("Gray Image", imgGray)
     cv2.imshow("Canny Image", imgCanny)  # detects the edges
     cv2.imshow("Dilation Image", imgDilation)
+    cv2.imshow("Eroded Image", imgEroded)
     cv2.waitKey(0)
 
 
